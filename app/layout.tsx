@@ -1,3 +1,4 @@
+import { ClientContext } from './ClientProvider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-       {children}</body>
+        <ClientContext>{children}</ClientContext>   </body>
     </html>
   )
 }

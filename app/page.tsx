@@ -1,26 +1,27 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import Secondpage from './secondpage/page';
+import Link from "next/link"
+import { useState } from "react";
+import ClientTry from "./productTable";
+import ProductTable from "./productTable";
+import SearchBar from "./searchBar";
 
+const PRODUCTS = [
+    { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+    { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+    { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+    { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+    { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+    { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
+];
+export default async function Secondpage() {
 
-async function getData() {
-  const res = await fetch('https://api.corona-zahlen.org/germany');
-  return res.json();
-}
-
-
-export default async function Home() {
-  const data  = getData();
-  const [covidData]= await Promise.all([data])
-  return (
-    <>
-    <div className='margin-auto'>
-    <p className='text-5xl pt-60 pl-60'> Number of cases of infection СOVID-19 for all time in Germany: <b>{covidData.cases}</b></p>
-    <p className='text-5xl pt-20 pl-60'> Deaths: <b>{covidData.deaths}</b></p>
-    <Link href={'/secondpage'}><button><p className='text-5xl pt-20 pl-60'>Go to the next page</p></button> </Link>
-    </div>
-    </>
-  )
+    return (
+        <>
+            <div className=" ps-80 pt-40">
+                <SearchBar />
+                <ProductTable products={PRODUCTS} />
+            </div>
+        </>
+    )
 }
 
 

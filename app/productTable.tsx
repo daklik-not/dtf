@@ -1,9 +1,13 @@
-
+'use client'
 import { useState } from "react"
 import SearchBar from "./searchBar"
 import ProductRow from "./ProductRow"
 import ProductCategoryRow from "./ProductCategoryRow";
+import { useContext } from "react";
+import { ClientContext } from "./ClientProvider";
 export default function ProductTable({products}) {
+  let { tryState } = useContext(ClientContext);
+
     const rows = [];
   let lastCategory :string ='';
 
